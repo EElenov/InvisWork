@@ -4,13 +4,28 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <StartupObject>InvisWork.App</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="res\Icon.png" />
+    <None Remove="res\xbtn.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.0.2">
+      <NoWarn>NU1701</NoWarn>
+    </PackageReference>
     <PackageReference Include="Fluent.Ribbon" Version="8.0.3" />
+    <PackageReference Include="System.DirectoryServices.AccountManagement" Version="5.0.0" />
     <PackageReference Include="Woof.System" Version="2.8.2">
       <NoWarn>NU1701</NoWarn>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="res\Icon.png" />
+    <Resource Include="res\xbtn.png" />
   </ItemGroup>
 
 </Project>
