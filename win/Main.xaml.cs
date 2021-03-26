@@ -24,6 +24,7 @@ namespace InvisWork
             DataContext = this;
             UserDir = new RelayCommand(o => SignIn());
             TerminateApp = new RelayCommand(o => UserSession.Terminate());
+            Topmost = true; 
         }
         private Brush _formColor = new SolidColorBrush(Colors.White);
         public Brush FormColor
@@ -84,7 +85,7 @@ namespace InvisWork
             var dark = (col.R + col.G + col.B) / 3;
             ForeColor = dark < 100 ? new SolidColorBrush(Colors.White) : new SolidColorBrush(Colors.Black);
             FormColor = col != Colors.Transparent ? new SolidColorBrush(col) : new SolidColorBrush(Color.FromArgb(1, 255, 255, 255));
-            FormColor.Opacity = col.A>0 ? (double)col.A / 255 : 1;
+            FormColor.Opacity = col.A>0 ? col.A : 1;
         }
         private Color ConvertNullColor(object sender) => (sender as ColorPicker).SelectedColor != null ? (Color)(sender as ColorPicker).SelectedColor : Color.FromArgb(255, 255, 255, 255);
     }

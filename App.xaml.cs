@@ -12,11 +12,17 @@ namespace InvisWork
         protected override void OnStartup(StartupEventArgs e)
         {
             new _mediator();
-            Welcome();
+            Welcome(true);
         }
 
-        private void Welcome()
+        private void Welcome(bool devmode=false)
         {
+            if(devmode)
+            {
+                UserSession.Terminate(false); 
+                Instance.Create<Main>();
+                return;
+            }
             UserSession.AuthenticateUser();
             switch (MessageBox.Show($"Detected Windows Login ({UserSession.CurrentUser.UserName})\n\nUse these credentials?", $"Hello {UserSession.CurrentUser.DisplayName}", MessageBoxButton.YesNo))
             {
